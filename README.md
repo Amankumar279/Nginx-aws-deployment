@@ -56,13 +56,13 @@ pm2 flush (Clear logs)
 pm2 startup ubuntu
 ```
 
-##✅ Fix frontend API URL (VERY COMMON MISTAKE)
+##6. Fix frontend API URL (VERY COMMON MISTAKE)
 ```
 VITE_API_URL=/api
 
 ```
 
-## 6. Setup Firewall
+## 7. Setup Firewall
 ```
 sudo ufw enable
 sudo ufw status
@@ -71,8 +71,9 @@ sudo ufw allow http (Port 80)
 sudo ufw allow https (Port 443)
 ```
 
-## 7. Install NGINX and configure
+## 8. Install NGINX and configure
 ```
+
 sudo apt install nginx
 
 sudo nano /etc/nginx/sites-available/default
@@ -111,7 +112,7 @@ sudo nginx -t
 sudo nginx -s reload
 ```
 
-## 8. Add SSL with LetsEncrypt
+## 9. Add SSL with LetsEncrypt
 ```
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
