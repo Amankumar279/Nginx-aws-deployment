@@ -3,12 +3,13 @@
 > Steps to deploy a Node.js app to DigitalOcean using PM2, NGINX as a reverse proxy and an SSL from LetsEncrypt
 
 ## Architecture (what we want)
+```
 Browser
    ↓
 Nginx :80
    ├── /        → React (client/dist)
    └── /api     → Node.js backend (localhost:8080 via PM2)
-
+```
 
 ## 1. Create Free AWS Account
 Create free AWS Account at https://aws.amazon.com/
@@ -53,6 +54,12 @@ pm2 flush (Clear logs)
 
 # To make sure app starts when reboot
 pm2 startup ubuntu
+```
+
+##✅ Fix frontend API URL (VERY COMMON MISTAKE)
+```
+VITE_API_URL=/api
+
 ```
 
 ## 6. Setup Firewall
