@@ -56,7 +56,7 @@ pm2 flush (Clear logs)
 pm2 startup ubuntu
 ```
 
-##6. Fix frontend API URL (VERY COMMON MISTAKE)
+## 6. Fix frontend API URL (VERY COMMON MISTAKE)
 ```
 VITE_API_URL=/api
 
@@ -121,4 +121,36 @@ sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
 
 # Only valid for 90 days, test the renewal process with
 certbot renew --dry-run
+```
+## 10. when there is more than 1 server and also it will send user request in round robin format
+```
+http {
+
+    upstream backend_servers {
+
+        server 127.0.0.1:3000;
+
+        server 127.0.0.1:3001;
+
+        server 127.0.0.1:3002;
+
+    }
+
+
+    server {
+
+        listen 80;
+
+        server_name example.com;
+
+
+        location / {
+
+            proxy_pass http://backend_servers;
+
+        }
+
+    }
+
+}
 ```
